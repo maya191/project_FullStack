@@ -1,0 +1,4 @@
+./serverCinema/keys.env
+./serverCinema/node_modules
+./serverAPI/node_modules
+./client/.gitignore

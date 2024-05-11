@@ -1,0 +1,32 @@
+[
+  {
+    "id": 99999,
+    "firstName": "Admin",
+    "lastName": "User",
+    "createdDate": "2024-04-23",
+    "sessionTimeOut": 30
+  },
+  {
+    "id": 1,
+    "firstName": "Leanne",
+    "lastName": "Graham",
+    "createdDate": "2023-04-22",
+    "sessionTimeOut": 60
+  },
+  {
+    "id": 7,
+    "firstName": "Ervin",
+    "lastName": "Howell",
+    "createdDate": "2023-04-22",
+    "sessionTimeOut": 45
+  },
+  
+  {
+    "id": 4,
+    "firstName": "tomer",
+    "lastName": "king",
+    "userName": "test",
+    "createdDate": "2024-05-11",
+    "sessionTimeOut": 20
+  }
+]

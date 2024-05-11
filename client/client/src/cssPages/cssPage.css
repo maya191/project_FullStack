@@ -1,0 +1,216 @@
+.login-container {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.login-container h1 {
+    text-align: center;
+}
+
+.login-form {
+    text-align: center;
+}
+
+.input-field {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+}
+
+.button {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: blanchedalmond;
+    border: 2px double wheat;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+    background-color: wheat;
+    color: rgb(48, 44, 75);
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+.login-form p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+
+/* Main css */
+.main-container {
+    width: 100%;
+    padding: 20px;
+    background-color: #d1b2b248;
+}
+
+.manegeUser {
+    border: 3px solid black;
+    padding-bottom: 15px;
+}
+
+.manegeUser h2 {
+    text-align: left;
+    padding-left: 50px;
+}
+
+.main-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbarManege {
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+
+}
+
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li {
+    display: inline-block;
+    font-size: 20px;
+    margin-right: 100px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #eee;
+}
+
+.logout-button {
+    padding: 10px 15px;
+    background-color: blanchedalmond;
+    border: 2px double wheat;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: wheat;
+    color: rgb(48, 44, 75);
+}
+
+.logout-button:active {
+    transform: translateY(1px);
+}
+
+
+/* User CSS*/
+.user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userDiv {
+    background-color: #f9f9f9c3;
+    border: 3px solid #ddd;
+    border-radius: 5px;
+    padding: 25px;
+    margin: 20px;
+    width: 300px;
+    text-align: left;
+}
+
+.edit-button,
+.delete-button {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #f0c588;
+    color: #fff;
+    border: 2px solid rgb(151, 145, 145);
+    cursor: pointer;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #7da4ce;
+}
+
+/*Permission*/
+.PermissionList {
+    list-style-type: none;
+}
+
+
+
+/*New User*/
+.user-form-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 400px;
+}
+
+.user-form-container h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.user-form-container label {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 200px;
+    /* Adjust the width as needed */
+}
+
+.user-form-container input[type="text"],
+.user-form-container input[type="number"] {
+    width: calc(100% - 220px);
+    /* Adjust the width as needed */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.user-form-container input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.user-form-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user-form-container button:hover {
+    background-color: #45a049;
+}

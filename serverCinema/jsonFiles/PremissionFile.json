@@ -1,0 +1,55 @@
+[
+  {
+    "userId": 99999,
+    "permissions": {
+      "viewSubscriptions": true,
+      "createSubscriptions": true,
+      "deleteSubscriptions": true,
+      "updateSubscription": true,
+      "viewMovies": true,
+      "createMovies": true,
+      "deleteMovies": true,
+      "updateMovie": true
+    }
+  },
+  {
+    "userId": 1,
+    "permissions": {
+      "viewSubscriptions": false,
+      "createSubscriptions": false,
+      "deleteSubscriptions": false,
+      "updateSubscription": false,
+      "viewMovies": true,
+      "createMovies": true,
+      "deleteMovies": true,
+      "updateMovie": true
+    }
+  },
+  {
+    "userId": 7,
+    "permissions": {
+      "viewSubscriptions": false,
+      "createSubscriptions": false,
+      "deleteSubscriptions": false,
+      "updateSubscription": false,
+      "viewMovies": true,
+      "createMovies": false,
+      "deleteMovies": false,
+      "updateMovie": false
+    }
+  },
+  
+  {
+    "userId": 4,
+    "permissions": {
+      "viewSubscriptions": true,
+      "createSubscriptions": false,
+      "deleteSubscriptions": false,
+      "updateSubscription": false,
+      "viewMovies": true,
+      "createMovies": false,
+      "deleteMovies": false,
+      "updateMovie": false
+    }
+  }
+]
