@@ -1,3 +1,8 @@
-./serverCinema/keys.env
-./serverCinema/node_modules/
-./serverAPI/node_modules/
+# Ignore keys.env file in serverCinema directory
+serverCinema/keys.env
+
+# Ignore node_modules directory in serverCinema directory
+serverCinema/node_modules/
+
+# Ignore node_modules directory in serverAPI directory
+serverAPI/node_modules/
