@@ -27,6 +27,7 @@ const LoginPage = () =>
                 const data = await res.json();
                 localStorage.setItem('token', data.accessToken);
                 localStorage.setItem('userName', data.userName);
+
                 navigate('/Main');
             }
         }

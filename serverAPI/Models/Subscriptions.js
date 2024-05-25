@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const subscriptionSchema = new Schema({
-    memberId: Schema.Types.ObjectId,
+    memberId: Number,
     movies: [{
         movieId: Schema.Types.ObjectId,
         date: Date

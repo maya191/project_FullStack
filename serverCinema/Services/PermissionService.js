@@ -20,6 +20,20 @@ const addNewPremission = async (obj) =>
         throw error;
     }
 }
+
+const updateUserPermissions = async (obj) =>
+{
+    let data = await getAllPremission();
+    const index = data.findIndex(user => parseInt(user.userId) === parseInt(obj.userId));
+    if (index !== -1) {
+        data[index] = obj
+        await PremissionRepo.addNewPremissionFile(data);
+        return { message: 'User Permissions updated successfully' };
+    } else {
+        throw new Error('User not found');
+    }
+}
+
 const deletePermissionById = async (userId) =>
 {
     try {
@@ -40,5 +54,6 @@ const deletePermissionById = async (userId) =>
 module.exports = {
     getAllPremission,
     addNewPremission,
-    deletePermissionById
+    deletePermissionById,
+    updateUserPermissions
 }

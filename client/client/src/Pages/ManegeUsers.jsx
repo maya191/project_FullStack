@@ -21,8 +21,6 @@ const ManegeUsers = () =>
                 </nav>
 
             </div>
-
-
         </>
     )
 }

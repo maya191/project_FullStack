@@ -23,7 +23,17 @@ router.post('/', async (req, res) =>
         res.status(500).json({ error: error.message });
     }
 });
-
+router.put('/:id', async (req, res) =>
+{
+    try {
+        const obj = req.body;
+        const newUserPermissions = await PermissionService.updateUserPermissions(obj);
+        res.status(200).send('User Permissions Updated!')
+    }
+    catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
 router.delete('/:id', async (req, res) =>
 {
     try {

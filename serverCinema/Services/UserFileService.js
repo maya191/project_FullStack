@@ -9,9 +9,9 @@ const addNewUserFile = async (obj) =>
 {
     const data = await getAllUsersFile();
     data.push(obj);
+    console.log(data);
     await UsersFileRepo.addNewUserFile(data);
     return obj; // Return the added user object
-
 }
 
 const deleteUserById = async (userId) =>
@@ -28,10 +28,22 @@ const deleteUserById = async (userId) =>
 
 }
 
-
+const updateUser = async (obj) =>
+{
+    let data = await getAllUsersFile();
+    const index = data.findIndex(user => parseInt(user.id) === parseInt(obj.id));
+    if (index !== -1) {
+        data[index] = obj
+        await UsersFileRepo.addNewUserFile(data); // Write updated data to file
+        return { message: 'User updated successfully' };
+    } else {
+        throw new Error('User not found');
+    }
+}
 
 module.exports = {
     getAllUsersFile,
     addNewUserFile,
-    deleteUserById
+    deleteUserById,
+    updateUser
 }

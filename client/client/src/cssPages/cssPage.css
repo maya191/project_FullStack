@@ -191,7 +191,6 @@
 .user-form-container input[type="text"],
 .user-form-container input[type="number"] {
     width: calc(100% - 220px);
-    /* Adjust the width as needed */
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -213,4 +212,37 @@
 
 .user-form-container button:hover {
     background-color: #45a049;
+}
+
+
+/*Movies*/
+.movies-container {
+    padding: 20px;
+}
+
+.movies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.movie-card {
+    border: 1px solid #dddddd;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.movie-image {
+    width: 100%;
+    height: auto;
+}
+
+.edit-button,
+.delete-button {
+    margin-right: 10px;
+}
+
+.subsDiv {
+    border: 2px solid black;
 }

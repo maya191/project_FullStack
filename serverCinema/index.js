@@ -19,13 +19,10 @@ app.use(express.json());
 
 app.use('/login', AuthController)
 
-/* app.use('/UsersFile', CheckAuthController, UserFileController);
-app.use('/Permission', CheckAuthController, PermissionController); */
+app.use('/UsersFile', CheckAuthController, UserFileController);
+app.use('/Permission', CheckAuthController, PermissionController);
 app.use('/UsersDB', CheckAuthController, UserDBController);
-app.use('/newUser', newUserController)
-//app.use('/UsersDB', UserDBController);
-app.use('/UsersFile', UserFileController);
-app.use('/Permission', PermissionController);
+//app.use('/newUser', newUserController)
 
 app.listen(PORT, () =>
 {

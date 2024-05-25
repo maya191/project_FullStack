@@ -15,13 +15,27 @@ const addNewUserDB = (obj, index) =>
     return newUser.save();
 }
 
-const updateUserDB = (id, obj) =>
+const getId = async (id) =>
 {
-    return UserDB.findByIdAndUpdate(id, obj)
+    try {
+        const user = await UserDB.findOne({ id });
+        return user._id;
+    } catch (error) {
+
+        return { user: null, error };
+    }
+
+
 }
-const deleteUserDB = (id) =>
+const updateUserDB = async (id, obj) =>
 {
-    return UserDB.findByIdAndDelete(id);
+    const userId = await getId(id)
+    return UserDB.findByIdAndUpdate(userId, obj)
+}
+const deleteUserDB = async (id) =>
+{
+    const userId = await getId(id)
+    return UserDB.findByIdAndDelete(userId);
 }
 const findUser = async (userName, password) =>
 {

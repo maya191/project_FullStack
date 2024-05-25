@@ -1,5 +1,6 @@
 const UserDBService = require('../Services/UserDBService')
 const express = require('express');
+const axios = require('axios');
 
 const router = express.Router();
 const membersURL = 'http://localhost:3000/Members'
@@ -27,6 +28,27 @@ router.get('/:id', async (req, res) =>
         res.send(error);
     }
 });
+//add new user
+router.post('/', async (req, res) =>
+{
+    try {
+        const obj = req.body;
+        const response = await axios.get(membersURL, { params: { name: obj.userName } });
+        if (response.data && response.data.length > 0) {
+            const result = await UserDBService.addNewUser(obj);
+            if (!Object.keys(result).length) {
+                res.status(409).send("user already exists")
+            }
+            else res.status(201).send(result);
+        }
+        else {
+            res.status(404).send("user not found")
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+});
 
 // Update a User
 router.put('/:id', async (req, res) =>
@@ -35,9 +57,10 @@ router.put('/:id', async (req, res) =>
         const { id } = req.params;
         const obj = req.body;
         const result = await UserDBService.updateUser(id, obj);
-        res.send(result);
+        console.log(result);
+        res.status(200).send(result);
     } catch (error) {
-        res.send(error);
+        res.status(500).send(error);
     }
 });
 

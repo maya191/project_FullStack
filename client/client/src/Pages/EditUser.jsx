@@ -1,114 +1,97 @@
 import React, { useState } from 'react';
-import ManegeUsers from './ManegeUsers';
+import { useLocation } from 'react-router-dom';
 import '../cssPages/cssPage.css';
-import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
-const AddUser = () =>
+import ManegeUsers from './ManegeUsers';
+import axios from 'axios';
+
+const EditUser = () =>
 {
-    const USERS_FILE_URL = 'http://localhost:4000/UsersFile';
-    const PERMISSIONS_FILE_URL = 'http://localhost:4000/Permission';
-    const USER_DB_URL = 'http://localhost:4000/UsersDB';
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { user } = location.state;
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [userName, setUserName] = useState('');
-    const [sessionTimeOut, setSessionTimeOut] = useState('');
-    const [permissions, setPermissions] = useState({
-        viewSubscriptions: false,
-        createSubscriptions: false,
-        deleteSubscriptions: false,
-        updateSubscription: false,
-        viewMovies: false,
-        createMovies: false,
-        deleteMovies: false,
-        updateMovie: false
-    });
+    const USERS_FILE_URL = `http://localhost:4000/UsersFile/${user.id}`;
+    const PERMISSIONS_FILE_URL = `http://localhost:4000/Permission/${user.id}`;
+    const USER_DB_URL = `http://localhost:4000/UsersDB/${user.id}`
+
+    const id = user.id;
+    const [firstName, setFirstName] = useState(user.firstName);
+    const [lastName, setLastName] = useState(user.lastName);
+    const [userName, setUserName] = useState(user.userName);
+    const [sessionTimeOut, setSessionTimeOut] = useState(user.sessionTimeOut);
+    const [permissions, setPermissions] = useState(user.permissions);
 
     const handlePermissionChange = (e) =>
     {
-        const { name, checked } = e.target;
-
-        setPermissions(prevState =>
-        {
-            const newPermissions = {
-                ...prevState,
-                [name]: checked
-            };
-
-            if (checked) {
-                if (name === "createSubscriptions" || name === "updateSubscription" || name === "deleteSubscriptions") {
-                    newPermissions.viewSubscriptions = true;
-                }
-                if (name === "createMovies" || name === "updateMovie" || name === "deleteMovies") {
-                    newPermissions.viewMovies = true;
-                }
-            }
-
-            return newPermissions;
+        setPermissions({
+            ...permissions,
+            [e.target.name]: e.target.checked,
         });
     };
 
     const handleSubmit = async (e) =>
     {
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        const day = String(today.getDate()).padStart(2, '0');
-
-        const formattedDate = `${year}-${month}-${day}`;
-
         e.preventDefault();
+        // Submit the updated user data to the server
+        console.log('Updated User Data:', {
+            firstName,
+            lastName,
+            userName,
+            sessionTimeOut,
+            permissions,
+        });
         const userDB = {
             userName
         }
         try {
-            // user to DB
-            const userDBres = await axios.post(USER_DB_URL, userDB, { headers: { "x-access-token": localStorage.getItem("token") } });
-            const id = userDBres.data.id;
-
+            const response = await axios.put(USER_DB_URL, userDB, {
+                headers: {
+                    "x-access-token": localStorage.getItem("token")
+                }
+            });
+            //update in file
             const userFileData = {
                 id,
                 firstName,
                 lastName,
-                createdDate: formattedDate,
-                sessionTimeOut: parseInt(sessionTimeOut), // Convert to integer
+                createdDate: user.createdDate,
+                sessionTimeOut: parseInt(sessionTimeOut) // Convert to integer
             };
+            const res = await axios.put(USERS_FILE_URL, userFileData,
+                {
+                    headers: {
+                        "x-access-token": localStorage.getItem("token")
+                    }
+                });
             const userPermissions = {
                 userId: id,
                 permissions
             }
-            // user to file!
-            const res = await axios.post(USERS_FILE_URL, userFileData, { headers: { "x-access-token": localStorage.getItem("token") } });
-            // user permissions
-            const resPermission = await axios.post(PERMISSIONS_FILE_URL, userPermissions, { headers: { "x-access-token": localStorage.getItem("token") } });
-
-            console.log('User created:', res.data);
-            console.log('Permission:', resPermission);
-            // Reset form fields
-            setFirstName('');
-            setLastName('');
-            setUserName('');
-            setSessionTimeOut('');
-            setPermissions({
-                viewSubscriptions: false,
-                createSubscriptions: false,
-                deleteSubscriptions: false,
-                updateSubscription: false,
-                viewMovies: false,
-                createMovies: false,
-                deleteMovies: false,
-                updateMovie: false
-            });
+            await axios.put(PERMISSIONS_FILE_URL, userPermissions,
+                {
+                    headers: {
+                        "x-access-token": localStorage.getItem("token")
+                    }
+                });
+            navigate('/Users');
         } catch (error) {
-            console.error('Error creating user:', error);
+            console.error('Error updating user:', error);
         }
     };
+
+
+    const handelCancel = () =>
+    {
+        navigate('/Users');
+    }
 
     return (
         <div>
             <ManegeUsers />
             <div className="user-form-container">
-                <h2>Create New User</h2>
+                <h2>Update User</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>First Name:</label>
@@ -126,6 +109,8 @@ const AddUser = () =>
                         <label>Session Time Out:</label>
                         <input type="number" value={sessionTimeOut} onChange={(e) => setSessionTimeOut(e.target.value)} />
                     </div>
+                    <p>Created Data: {user.createdDate}</p>
+
                     <div>
                         <label>Permissions:</label>
                         <div>
@@ -161,11 +146,13 @@ const AddUser = () =>
                             <label>Update Movie</label>
                         </div>
                     </div>
-                    <button type="submit">Create User</button>
+                    <button onClick={handleSubmit}>Update User</button>
+                    <button onClick={handelCancel}>Cancel</button>
                 </form>
             </div>
         </div>
-    )
-}
+    );
 
-export default AddUser;
+};
+
+export default EditUser;

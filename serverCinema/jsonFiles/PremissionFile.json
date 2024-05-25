@@ -15,20 +15,7 @@
   {
     "userId": 1,
     "permissions": {
-      "viewSubscriptions": false,
-      "createSubscriptions": false,
-      "deleteSubscriptions": false,
-      "updateSubscription": false,
-      "viewMovies": true,
-      "createMovies": true,
-      "deleteMovies": true,
-      "updateMovie": true
-    }
-  },
-  {
-    "userId": 7,
-    "permissions": {
-      "viewSubscriptions": false,
+      "viewSubscriptions": true,
       "createSubscriptions": false,
       "deleteSubscriptions": false,
       "updateSubscription": false,
@@ -38,17 +25,29 @@
       "updateMovie": false
     }
   },
-  
   {
-    "userId": 4,
+    "userId": 2,
     "permissions": {
       "viewSubscriptions": true,
       "createSubscriptions": false,
-      "deleteSubscriptions": false,
+      "deleteSubscriptions": true,
       "updateSubscription": false,
       "viewMovies": true,
       "createMovies": false,
-      "deleteMovies": false,
+      "deleteMovies": true,
+      "updateMovie": false
+    }
+  },
+  {
+    "userId": 3,
+    "permissions": {
+      "viewSubscriptions": true,
+      "createSubscriptions": false,
+      "deleteSubscriptions": true,
+      "updateSubscription": false,
+      "viewMovies": true,
+      "createMovies": true,
+      "deleteMovies": true,
       "updateMovie": false
     }
   }

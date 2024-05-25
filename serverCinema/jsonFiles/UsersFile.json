@@ -8,25 +8,23 @@
   },
   {
     "id": 1,
-    "firstName": "Leanne",
-    "lastName": "Graham",
-    "createdDate": "2023-04-22",
-    "sessionTimeOut": 60
-  },
-  {
-    "id": 7,
-    "firstName": "Ervin",
-    "lastName": "Howell",
-    "createdDate": "2023-04-22",
-    "sessionTimeOut": 45
-  },
-  
-  {
-    "id": 4,
     "firstName": "tomer",
     "lastName": "king",
-    "userName": "test",
     "createdDate": "2024-05-11",
-    "sessionTimeOut": 20
+    "sessionTimeOut": 27
+  },
+  {
+    "id": 2,
+    "firstName": "Maya",
+    "lastName": "Queen",
+    "createdDate": "2024-05-23",
+    "sessionTimeOut": 55
+  },
+  {
+    "id": 3,
+    "firstName": "Mayo",
+    "lastName": "blabla",
+    "createdDate": "2024-05-23",
+    "sessionTimeOut": 38
   }
 ]

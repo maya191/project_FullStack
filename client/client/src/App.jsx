@@ -5,7 +5,11 @@ import CreateAccount from "./Pages/CreateAccount"
 import ManegeUsers from "./Pages/ManegeUsers"
 import User from "./Pages/User"
 import AddUser from "./Pages/AddUser"
-import { Routes, Route, Link } from 'react-router-dom';
+import EditUser from "./Pages/EditUser"
+import Movies from "./Pages/Movies"
+import AllMovies from './Pages/AllMovies'
+import EditMovie from "./Pages/EditMovie"
+import { Routes, Route } from 'react-router-dom';
 
 const App = () =>
 {
@@ -18,6 +22,10 @@ const App = () =>
         <Route path="/Usermanagment" element={<ManegeUsers />} />
         <Route path="/Users" element={<User />} />
         <Route path="/AddUser" element={<AddUser />} />
+        <Route path="/EditUser/:id" element={<EditUser />} />
+        <Route path="/Movies" element={<Movies />} />
+        <Route path="/AllMovies" element={<AllMovies />} />
+        <Route path="/EditMovie/:id" element={<EditMovie />} />
       </Routes>
 
     </>

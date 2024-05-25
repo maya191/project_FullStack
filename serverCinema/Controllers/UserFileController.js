@@ -24,6 +24,17 @@ router.post('/', async (req, res) =>
         res.status(500).json({ error: error.message });
     }
 });
+router.put('/:id', async (req, res) =>
+{
+    try {
+        const obj = req.body;
+        const newUser = await UsersFileService.updateUser(obj);
+        res.status(200).send('User file Updated!')
+    }
+    catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
 
 router.delete('/:id', async (req, res) =>
 {
