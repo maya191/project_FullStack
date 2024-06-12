@@ -48,12 +48,13 @@
     font-size: 14px;
 }
 
-
 /* Main css */
 .main-container {
     width: 100%;
     padding: 20px;
-    background-color: #d1b2b248;
+    background-color: #b5959d7a;
+    /* Ensure this is the correct background color */
+    text-align: center;
 }
 
 .manegeUser {
@@ -81,7 +82,6 @@
     padding-left: 50px;
     display: flex;
     align-items: center;
-
 }
 
 .nav-list {
@@ -126,8 +126,7 @@
     transform: translateY(1px);
 }
 
-
-/* User CSS*/
+/* User CSS */
 .user-container {
     display: flex;
     flex-direction: column;
@@ -159,14 +158,12 @@
     background-color: #7da4ce;
 }
 
-/*Permission*/
+/* Permission */
 .PermissionList {
     list-style-type: none;
 }
 
-
-
-/*New User*/
+/* New User */
 .user-form-container {
     margin: 20px;
     padding: 20px;
@@ -185,7 +182,6 @@
     display: inline-block;
     margin-bottom: 10px;
     width: 200px;
-    /* Adjust the width as needed */
 }
 
 .user-form-container input[type="text"],
@@ -214,8 +210,7 @@
     background-color: #45a049;
 }
 
-
-/*Movies*/
+/* Movies */
 .movies-container {
     padding: 20px;
 }
@@ -245,4 +240,63 @@
 
 .subsDiv {
     border: 2px solid black;
+}
+
+/* Members CSS */
+.members-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.members-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.member-card {
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    /* Added border */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.edit-button,
+.delete-button,
+.subscribe-button {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #f0c588;
+    color: #fff;
+    border: 2px solid rgb(151, 145, 145);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover,
+.delete-button:hover,
+.subscribe-button:hover {
+    background-color: #7da4ce;
+}
+
+.movies-list {
+    text-align: left;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    /* Added border */
+    padding: 10px;
+    border-radius: 5px;
 }

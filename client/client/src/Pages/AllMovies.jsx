@@ -10,6 +10,8 @@ const AllMovies = () =>
     const SUBSCRIPTIONS_URL = 'http://localhost:3000/Subscriptions';
     const USERS_URL = 'http://localhost:4000/UsersDB';
     const PERMISSIONS_FILE_URL = 'http://localhost:4000/Permission';
+    const MEMBERS_URL = 'http://localhost:3000/Members';
+
 
     const navigate = useNavigate();
     const userConnectedName = localStorage.getItem('userName');
@@ -17,6 +19,8 @@ const AllMovies = () =>
     const [subscriptions, setSubscriptions] = useState([]);
     const [users, setUsers] = useState([]);
     const [permissions, setPermissions] = useState([]);
+    const [members, setMembers] = useState([]);
+
 
     useEffect(() =>
     {
@@ -27,11 +31,13 @@ const AllMovies = () =>
                 const subscriptionsRes = await axios.get(SUBSCRIPTIONS_URL, { headers: { "x-access-token": localStorage.getItem("token") } });
                 const usersRes = await axios.get(USERS_URL, { headers: { "x-access-token": localStorage.getItem("token") } });
                 const permissionsRes = await axios.get(PERMISSIONS_FILE_URL, { headers: { "x-access-token": localStorage.getItem("token") } });
+                const membersRes = await axios.get(MEMBERS_URL, { headers: { "x-access-token": localStorage.getItem("token") } });
 
                 setMovies(moviesRes.data);
                 setSubscriptions(subscriptionsRes.data);
                 setUsers(usersRes.data);
                 setPermissions(permissionsRes.data);
+                setMembers(membersRes.data);
 
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -78,8 +84,8 @@ const AllMovies = () =>
     };
     const getMemberName = (memberId) =>
     {
-        const member = users.find(member => member.id === memberId);
-        return member ? member.userName : 'Unknown Member';
+        const member = members.find(member => member._id === memberId);
+        return member ? member.name : 'Unknown Member';
     };
     return (
         <div className="movies-container">
@@ -103,7 +109,7 @@ const AllMovies = () =>
                             <ul>
                                 {getSubscriptionsForMovie(movie._id).map(sub => (
                                     <li key={sub._id}>
-                                        <Link to={`/subscription/${sub._id}`}>
+                                        <Link to={`/subscription/${sub.memberId}`}>
                                             {getMemberName(sub.memberId)}
                                         </Link> ({getYearFromDateString(sub.date)})
                                     </li>

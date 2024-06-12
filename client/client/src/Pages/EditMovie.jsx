@@ -59,7 +59,7 @@ const EditMovie = () =>
             <Movies />
             <div className="user-form-container">
 
-                <h2>Update Movie</h2>
+                <h2>Update Movie: {movieName}</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>Name:</label>
